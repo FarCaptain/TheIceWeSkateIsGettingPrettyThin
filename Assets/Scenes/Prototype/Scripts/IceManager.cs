@@ -5,10 +5,15 @@ using UnityEngine.Tilemaps;
 
 public class IceManager : MonoBehaviour
 {
+    [Range(2, 12)]
+    public int iceLayers = 2;
+
     [SerializeField]
     private Tilemap iceMap;
     [SerializeField]
     private GameObject Skater;
+    [SerializeField]
+    private TileBase tile0;
     [SerializeField]
     private TileBase tile1;
     [SerializeField]
@@ -33,8 +38,7 @@ public class IceManager : MonoBehaviour
     private TileBase tile11;
     [SerializeField]
     private TileBase tile12;
-    [SerializeField]
-    private TileBase tile13;
+
 
     //This dictionary and array are used to point to the next tile that should be displayed. I assume there is a better way to do this but I couldn't find one.
     private Dictionary<string, int> nextTile;
@@ -48,21 +52,20 @@ public class IceManager : MonoBehaviour
     void Start()
     {
         nextTile = new Dictionary<string, int>();
-        nextTile[tile1.name] = 1;
-        nextTile[tile2.name] = 2;
-        nextTile[tile3.name] = 3;
-        nextTile[tile4.name] = 4;
-        nextTile[tile5.name] = 5;
-        nextTile[tile6.name] = 6;
-        nextTile[tile7.name] = 7;
-        nextTile[tile8.name] = 8;
-        nextTile[tile9.name] = 9;
-        nextTile[tile10.name] = 10;
-        nextTile[tile11.name] = 11;
-        nextTile[tile12.name] = 12;
-        nextTile[tile13.name] = -1;
 
-        allTiles = new TileBase[] { tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8, tile9, tile10, tile11, tile12, tile13 };
+        allTiles = new TileBase[] { tile0, tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8, tile9, tile10, tile11, tile12 };
+
+        // link list this is
+        for (int i = 0; i < 12; i++)
+        {
+            nextTile[allTiles[i].name] = (i + 1);
+        }
+        nextTile[allTiles[12].name] = -1;
+
+        // if we are not using all tiles, choose from back of the array
+        int startIndex = 12 - iceLayers + 1;
+        nextTile[allTiles[0].name] = startIndex;
+
         grid = iceMap.layoutGrid;
         currentTile = grid.WorldToCell(Skater.transform.position);
     }
