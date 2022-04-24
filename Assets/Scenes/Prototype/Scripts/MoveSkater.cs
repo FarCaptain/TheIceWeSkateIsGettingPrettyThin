@@ -8,7 +8,22 @@ public class MoveSkater : MonoBehaviour
     public float turnSpeed;
     public bool mouseControl;
 
+    //[]
     public bool isGliding = false;
+    public float glidingDuration;
+    public float jumpCoolDownDuration;
+    private Timer glideTimer;
+    private Timer jumpCooldownTimer;
+
+    void Start()
+    {
+        glideTimer = gameObject.AddComponent<Timer>();
+        jumpCooldownTimer = gameObject.AddComponent<Timer>();
+        glideTimer.MaxTime = glidingDuration;
+        jumpCooldownTimer.MaxTime = jumpCoolDownDuration;
+        glideTimer.TimerStart = false;
+        jumpCooldownTimer.TimerStart = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -40,16 +55,27 @@ public class MoveSkater : MonoBehaviour
             transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * speed;
 
             float jump = Input.GetAxis("Jump");
-            if (jump != 0f)
+            Animator SkaterAnimator = gameObject.GetComponentInChildren<Animator>();
+            if (!isGliding && jump != 0f)
             {
-                gameObject.GetComponentInChildren<Animator>().SetBool("JumpTrigger", true);
-                //glid for a while, cannot use rotation
+                SkaterAnimator.SetBool("JumpTrigger", true);
+                //glide for a while, cannot use arrow keys
                 isGliding = true;
+                glideTimer.TimerStart = true;
             }
-            else
+
+            if(isGliding && glideTimer.TimerStart == false)
             {
-                gameObject.GetComponentInChildren<Animator>().SetBool("JumpTrigger", false);
-                isGliding = false;
+                //if (jumpCooldownTimer.TimerStart == false)
+                //{
+                //    jumpCooldownTimer.TimerStart = true;
+                //}
+                //else
+                {
+                    glideTimer.ResetTimer();
+                    SkaterAnimator.SetBool("JumpTrigger", false);
+                    isGliding = false;
+                }
             }
         }
     }

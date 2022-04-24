@@ -82,47 +82,51 @@ public class IceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Skater.GetComponent<MoveSkater>().isGliding)
-            return;
-
-        Vector3Int cellLocation = grid.WorldToCell(Skater.transform.position);
-
-        if (iceMap.HasTile(cellLocation) && currentTile != cellLocation)
+        if (Skater != null)
         {
-            int indexOfNextTile = nextTile[iceMap.GetTile(currentTile).name];
-            if (indexOfNextTile == -1)
+            if (Skater.GetComponent<MoveSkater>().isGliding)
+                return;
+
+            Vector3Int cellLocation = grid.WorldToCell(Skater.transform.position);
+
+            if (iceMap.HasTile(cellLocation) && currentTile != cellLocation)
             {
-                //Player Drowns
-                // TODO. Death animation
-                Object.Destroy(Skater);
-            }
-            else
-            {
-                iceMap.SetTile(currentTile, allTiles[indexOfNextTile]);
-                for (int i = 0; i < 4; i++)
+                int indexOfNextTile = nextTile[iceMap.GetTile(currentTile).name];
+                if (indexOfNextTile == -1)
                 {
-                    Vector3Int adjacentTile = new Vector3Int(currentTile.x + dx[i], currentTile.y + dy[i], currentTile.z);
-
-                    //if(iceMap.HasTile(adjacentTile))
-                    //iceMap.SetTile(adjacentTile, tile6);
-
-                    if (iceMap.HasTile(adjacentTile) && !IsSteped(adjacentTile))
+                    //Player Drowns
+                    // TODO. Death animation
+                    Skater.GetComponentInChildren<Animator>().SetBool("DeathTrigger", true);
+                    Object.Destroy(Skater, 0.1f);
+                }
+                else
+                {
+                    iceMap.SetTile(currentTile, allTiles[indexOfNextTile]);
+                    for (int i = 0; i < 4; i++)
                     {
-                        visitTable.Clear();
-                        if (findEncirledGrids(adjacentTile))
+                        Vector3Int adjacentTile = new Vector3Int(currentTile.x + dx[i], currentTile.y + dy[i], currentTile.z);
+
+                        //if(iceMap.HasTile(adjacentTile))
+                        //iceMap.SetTile(adjacentTile, tile6);
+
+                        if (iceMap.HasTile(adjacentTile) && !IsSteped(adjacentTile))
                         {
-                            foreach (var pair in visitTable)
+                            visitTable.Clear();
+                            if (findEncirledGrids(adjacentTile))
                             {
-                                //set to water tiles
-                                Vector3Int tile = pair.Key;
-                                if (iceMap.HasTile(tile))
-                                    iceMap.SetTile(tile, allTiles[allTiles.Length - 1]);
+                                foreach (var pair in visitTable)
+                                {
+                                    //set to water tiles
+                                    Vector3Int tile = pair.Key;
+                                    if (iceMap.HasTile(tile))
+                                        iceMap.SetTile(tile, allTiles[allTiles.Length - 1]);
+                                }
                             }
                         }
                     }
                 }
+                currentTile = cellLocation;
             }
-            currentTile = cellLocation;
         }
     }
 
