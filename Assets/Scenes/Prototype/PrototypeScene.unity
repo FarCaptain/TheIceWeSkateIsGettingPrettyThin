@@ -746,7 +746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.01
   turnSpeed: 2
-  mouseControl: 1
+  mouseControl: 0
 --- !u!850595691 &1442971422
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1373,6 +1373,10 @@ PrefabInstance:
       propertyPath: iceMap
       value: 
       objectReference: {fileID: 1023638652}
+    - target: {fileID: 518450576862077196, guid: e663c3f2cbfbc83419a6c56db453b202, type: 3}
+      propertyPath: iceLayers
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 518450576862077197, guid: e663c3f2cbfbc83419a6c56db453b202, type: 3}
       propertyPath: m_RootOrder
       value: 5
