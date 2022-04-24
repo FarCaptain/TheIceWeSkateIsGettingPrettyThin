@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Ice Jam tile set_Weak Ice-16_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1604009584, guid: 2c7c629faae3b4e17a56d0756a8c3896, type: 3}
+  m_Sprite: {fileID: -1719245980, guid: 6b79a5917907949cebfc89d828ae5143, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

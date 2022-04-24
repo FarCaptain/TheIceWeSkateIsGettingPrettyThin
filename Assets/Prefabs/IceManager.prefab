@@ -50,9 +50,9 @@ MonoBehaviour:
   Wall:
   - {fileID: 11400000, guid: a85e410bc52546d4c99cffe07e92fa74, type: 2}
   TopLeftCorner:
+  - {fileID: 11400000, guid: e1175870322e7514a8c30541712fac31, type: 2}
   - {fileID: 11400000, guid: c9c47d93103521e438f72d34ea47f6f7, type: 2}
-  - {fileID: 11400000, guid: e593241a3d940fc458681cdf287a0eeb, type: 2}
-  - {fileID: 11400000, guid: f521568da1444204595e3b96372308fc, type: 2}
+  - {fileID: 11400000, guid: 9c02c7f87180a96489014815e7a2c17c, type: 2}
   TopSide:
   - {fileID: 11400000, guid: 782e0bb2c4662b24a8d8b29bd99a70db, type: 2}
   - {fileID: 11400000, guid: 50c0bf104261be741bd13d7a119a1191, type: 2}
