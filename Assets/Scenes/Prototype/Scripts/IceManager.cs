@@ -82,6 +82,9 @@ public class IceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Skater.GetComponent<MoveSkater>().isGliding)
+            return;
+
         Vector3Int cellLocation = grid.WorldToCell(Skater.transform.position);
 
         if (iceMap.HasTile(cellLocation) && currentTile != cellLocation)
