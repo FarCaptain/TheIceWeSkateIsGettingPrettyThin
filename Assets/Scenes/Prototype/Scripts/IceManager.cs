@@ -13,36 +13,38 @@ public class IceManager : MonoBehaviour
     [SerializeField]
     private GameObject Skater;
     [SerializeField]
-    private TileBase tile0;
+    private TileBase[] Wall;
     [SerializeField]
-    private TileBase tile1;
+    private TileBase[] TopLeftCorner;
     [SerializeField]
-    private TileBase tile2;
+    private TileBase[] TopSide;
     [SerializeField]
-    private TileBase tile3;
+    private TileBase[] TopRightCorner;
     [SerializeField]
-    private TileBase tile4;
+    private TileBase[] LeftSide;
     [SerializeField]
-    private TileBase tile5;
+    private TileBase[] Center;
     [SerializeField]
-    private TileBase tile6;
+    private TileBase[] RightSide;
     [SerializeField]
-    private TileBase tile7;
+    private TileBase[] BottomLeftCorner;
     [SerializeField]
-    private TileBase tile8;
+    private TileBase[] BottomSide;
     [SerializeField]
-    private TileBase tile9;
+    private TileBase[] BottomRightCorner;
     [SerializeField]
-    private TileBase tile10;
+    private TileBase[] TopLeftTiny;
     [SerializeField]
-    private TileBase tile11;
+    private TileBase[] TopRightTiny;
     [SerializeField]
-    private TileBase tile12;
+    private TileBase[] BottomLeftTiny;
+    [SerializeField]
+    private TileBase[] BottomRightTiny;
 
 
     //This dictionary and array are used to point to the next tile that should be displayed. I assume there is a better way to do this but I couldn't find one.
-    private Dictionary<string, int> nextTile;
-    private TileBase[] allTiles;
+    private Dictionary<string, Vector2Int> tileIndex;
+    private TileBase[][] allTiles;
 
     private Dictionary<Vector3Int, bool> visitTable;
 
@@ -56,21 +58,27 @@ public class IceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextTile = new Dictionary<string, int>();
+        tileIndex = new Dictionary<string, Vector2Int>();
         visitTable = new Dictionary<Vector3Int, bool>();
 
-        allTiles = new TileBase[] { tile0, tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8, tile9, tile10, tile11, tile12 };
+        allTiles = new TileBase[][] { Wall, TopLeftCorner, TopSide, TopRightCorner, 
+                                            LeftSide, Center, RightSide, 
+                                            BottomLeftCorner, BottomSide, BottomRightCorner, 
+                                            TopLeftTiny, TopRightTiny, BottomLeftTiny, BottomRightTiny};
 
-        // link list this is
-        for (int i = 0; i < 12; i++)
+        // link list this isnt
+        for (int i = 0; i < allTiles.Length; i++)
         {
-            nextTile[allTiles[i].name] = (i + 1);
+            for (int j = 0; j < allTiles[i].Length; j++)
+            {
+                tileIndex.Add(allTiles[i][j].name, new Vector2Int(i, j));
+            }
         }
-        nextTile[allTiles[12].name] = -1;
+        //tileIndex[allTiles[12].name] = -1;
 
         // if we are not using all tiles, choose from back of the array
         int startIndex = 12 - iceLayers + 1;
-        nextTile[allTiles[0].name] = startIndex;
+        //tileIndex[allTiles[0].name] = startIndex;
 
         grid = iceMap.layoutGrid;
         currentTile = grid.WorldToCell(Skater.transform.position);
@@ -91,8 +99,8 @@ public class IceManager : MonoBehaviour
 
             if (iceMap.HasTile(cellLocation) && currentTile != cellLocation)
             {
-                int indexOfNextTile = nextTile[iceMap.GetTile(currentTile).name];
-                if (indexOfNextTile == -1)
+                Vector2Int indexOfCurrentTile = tileIndex[iceMap.GetTile(currentTile).name];
+                if (indexOfCurrentTile.y == 2 && !IsWall(currentTile))
                 {
                     //Player Drowns
                     // TODO. Death animation
@@ -101,7 +109,8 @@ public class IceManager : MonoBehaviour
                 }
                 else
                 {
-                    iceMap.SetTile(currentTile, allTiles[indexOfNextTile]);
+                    if (!IsWall(currentTile))
+                        iceMap.SetTile(currentTile, allTiles[indexOfCurrentTile.x][indexOfCurrentTile.y + 1]);
                     for (int i = 0; i < 4; i++)
                     {
                         Vector3Int adjacentTile = new Vector3Int(currentTile.x + dx[i], currentTile.y + dy[i], currentTile.z);
@@ -118,8 +127,11 @@ public class IceManager : MonoBehaviour
                                 {
                                     //set to water tiles
                                     Vector3Int tile = pair.Key;
-                                    if (iceMap.HasTile(tile))
-                                        iceMap.SetTile(tile, allTiles[allTiles.Length - 1]);
+                                    string tilename = iceMap.GetTile(tile).name;
+                                    if (iceMap.HasTile(tile) && !IsWall(tile))
+                                    {                                       
+                                        iceMap.SetTile(tile, allTiles[tileIndex[tilename].x][2]);
+                                    }                                       
                                 }
                             }
                         }
@@ -130,15 +142,21 @@ public class IceManager : MonoBehaviour
         }
     }
 
+    private bool IsWall(Vector3Int tile)
+    {
+        string tilename = iceMap.GetTile(tile).name;
+        return tileIndex[tilename].x == 0;
+    }
+
     private bool IsWater(Vector3Int tile)
     {
-        int indexOfNextTile = nextTile[iceMap.GetTile(tile).name];
-        return indexOfNextTile == -1;
+        int indexOfNextTile = tileIndex[iceMap.GetTile(tile).name].y;
+        return indexOfNextTile == 2;
     }
 
     private bool IsSteped(Vector3Int tile)
     {
-        return iceMap.GetTile(tile).name != allTiles[0].name;
+        return tileIndex[iceMap.GetTile(tile).name].y == 1;
     }
 
     public string GetTileName(Vector3Int tilePos)
