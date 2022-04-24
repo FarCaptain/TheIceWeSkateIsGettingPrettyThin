@@ -4183,8 +4183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7a39dc2c3c9524e83aac1c41ec6f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iceLayers: 2
   iceMap: {fileID: 1023638652}
   Skater: {fileID: 1411767858}
+  tile0: {fileID: 11400000, guid: 32861ed2a85246f43bd68712ab308786, type: 2}
   tile1: {fileID: 11400000, guid: 66ba47f8692860948ad8494a4b100387, type: 2}
   tile2: {fileID: 11400000, guid: e97760d71179d4b48ae1f6cd77833084, type: 2}
   tile3: {fileID: 11400000, guid: 2c29f589a3b775b43b711058ae3c829b, type: 2}
@@ -4197,7 +4199,6 @@ MonoBehaviour:
   tile10: {fileID: 11400000, guid: 6045d84f5efa7c34585fd8e56ebc9069, type: 2}
   tile11: {fileID: 11400000, guid: eb37f67a72f90e44f8d713273dc79c75, type: 2}
   tile12: {fileID: 11400000, guid: cc0f201df40e6d04da9986380cba13d8, type: 2}
-  tile13: {fileID: 11400000, guid: 32861ed2a85246f43bd68712ab308786, type: 2}
 --- !u!4 &1794962009
 Transform:
   m_ObjectHideFlags: 0
@@ -4211,7 +4212,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1883176790
 GameObject:
@@ -4642,7 +4643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3306637573007448783, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3306637573007448783, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4654,7 +4655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3306637573007448783, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.32
       objectReference: {fileID: 0}
     - target: {fileID: 3306637573007448783, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
       propertyPath: m_LocalRotation.w
