@@ -1,27 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class FallableObject : MonoBehaviour
 {
-    private GameObject grid;
+    private Grid grid;
     private IceManager iceManager;
-    private int xLoc;
-    private int yLoc;
-    private int zLoc;
     private Vector3Int loc;
+    [SerializeField] Tilemap iceMap;
 
     private LevelObjectTracker tracker;
 
     // Start is called before the first frame update
     void Start()
     {
-        grid = GameObject.Find("IceManager");
-        iceManager = grid.GetComponent<IceManager>();
-        xLoc = Mathf.FloorToInt(transform.position.x);
-        yLoc = Mathf.FloorToInt(transform.position.y);
-        zLoc = Mathf.FloorToInt(transform.position.z);
-        loc = new Vector3Int(xLoc, yLoc, zLoc);
+        iceManager = GameObject.Find("IceManager").GetComponent<IceManager>();
+        grid = iceMap.layoutGrid;
+        loc = grid.WorldToCell(transform.position);
+
 
         tracker = GameObject.Find("Tracker").GetComponent<LevelObjectTracker>();
     }
@@ -29,11 +26,11 @@ public class FallableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (iceManager.GetTileName(loc).Equals("Empty"))
+        if (iceManager.GetTileName(loc).Equals("Water"))
         {
             tracker.decreaseNumFallableObjects();
             Destroy(this.gameObject);
         }
-        
+
     }
 }

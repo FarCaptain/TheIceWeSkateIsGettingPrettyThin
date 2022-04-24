@@ -163,6 +163,10 @@ public class IceManager : MonoBehaviour
     {
         if (!iceMap.HasTile(tilePos))
             return "Empty";
+        else if (IsWater(tilePos))
+        {
+            return "Water";
+        }
         return iceMap.GetTile(tilePos).name;
     }
 
