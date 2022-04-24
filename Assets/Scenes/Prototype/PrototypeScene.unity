@@ -484,7 +484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3306637573007448782, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
       propertyPath: speed
-      value: 0.005
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3306637573007448782, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
       propertyPath: glidingDuration
@@ -504,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3306637573007448783, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3306637573007448783, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
       propertyPath: m_LocalRotation.w
