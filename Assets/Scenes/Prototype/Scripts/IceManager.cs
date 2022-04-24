@@ -90,6 +90,7 @@ public class IceManager : MonoBehaviour
             if (indexOfNextTile == -1)
             {
                 //Player Drowns
+                // TODO. Death animation
                 Object.Destroy(Skater);
             }
             else
