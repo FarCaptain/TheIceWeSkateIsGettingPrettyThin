@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 930731886}
   - component: {fileID: 930731885}
   m_Layer: 0
-  m_Name: Level 01ThickIce
+  m_Name: Level 03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2643,7 +2643,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2713,7 +2713,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 11
-      m_TileSpriteIndex: 9
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2840,8 +2840,8 @@ Tilemap:
     m_Data: {fileID: -790338024, guid: 50d87ad58c0024d4882f7de33f264680, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 2032673189, guid: 741eb9bcae1e94b53a3d8048d6015a36, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1914000848, guid: ea513798f5d57436497656a4df59362b, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 12
     m_Data: {fileID: 865954490, guid: dfd1d702d380343629928dbcdc8d1992, type: 3}
   - m_RefCount: 13
@@ -2854,8 +2854,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: -497554905, guid: ed5b225f820f846e39525b3a9397d5ea, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 97
     m_Data: {fileID: 1904018120, guid: 82a43b30dab5a45b2adc6025208bb3f0, type: 3}
   - m_RefCount: 6
