@@ -83,8 +83,9 @@ public class MoveSkater : MonoBehaviour
        
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-        
-    //}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(-10f, 0));
+        print("int");
+    }
 }
