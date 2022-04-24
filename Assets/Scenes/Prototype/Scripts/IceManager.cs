@@ -105,7 +105,8 @@ public class IceManager : MonoBehaviour
                     //Player Drowns
                     // TODO. Death animation
                     Skater.GetComponentInChildren<Animator>().SetBool("DeathTrigger", true);
-                    Object.Destroy(Skater, 0.1f);
+                    Skater.GetComponent<MoveSkater>().hasFell = true;
+                    //Object.Destroy(Skater, 0.1f);
                 }
                 else
                 {

@@ -6,7 +6,6 @@ public class MoveSkater : MonoBehaviour
 {
     public float speed;
     public float turnSpeed;
-    public bool mouseControl;
 
     //[]
     public bool isGliding = false;
@@ -14,6 +13,11 @@ public class MoveSkater : MonoBehaviour
     public float jumpCoolDownDuration;
     private Timer glideTimer;
     private Timer jumpCooldownTimer;
+
+    //Julian
+    public bool hasFell = false;
+    public float speedDif;
+    private float dynamSpeed;
 
     void Start()
     {
@@ -28,41 +32,37 @@ public class MoveSkater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mouseControl)
+        
+       
+            //Stops Skater when they fall
+            if (hasFell)
+                dynamSpeed = 0;
+
+
+
+        if (!isGliding&&!hasFell)
         {
-            //Debug.Log("MouseLocation" + Camera.main.ScreenToWorldPoint(Input.mousePosition) + "Diamond"+ transform.position);
-            Vector3 mouseVector = Camera.main.ScreenToWorldPoint(Input.mousePosition)+ new Vector3(0,0,10) - transform.position;
-            float rotation = Mathf.Deg2Rad * transform.eulerAngles[2];
-            Vector3 directionVector = new Vector3(Mathf.Sin(rotation), -Mathf.Cos(rotation), 0);
-            float angleToMouse = Vector3.Dot(directionVector, mouseVector.normalized);
 
-            int turn = angleToMouse > 0 ? -1 : 1;
-
+            float turn = -Input.GetAxis("Horizontal");
             transform.eulerAngles += new Vector3(0, 0, turn * turnSpeed * Time.deltaTime);
-            rotation = Mathf.Deg2Rad * transform.eulerAngles[2];
-            transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * speed * Time.deltaTime;
-
-            //Debug.Log("Direction:"+directionVector + "MouseVector:"+ mouseVector + "Angle to Mouse" + angleToMouse);
-        }
-        else
-        {
-            if (!isGliding)
-            {
-                float turn = -Input.GetAxis("Horizontal");
-                transform.eulerAngles += new Vector3(0, 0, turn * turnSpeed * Time.deltaTime);
+            //Speed variation
+            float speedUP = Input.GetAxis("Vertical");
+            dynamSpeed = speed + (speedUP * speedDif);
             }
-            float rotation = Mathf.Deg2Rad * transform.eulerAngles[2];
-            transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * speed * Time.deltaTime;
 
+            float rotation = Mathf.Deg2Rad * transform.eulerAngles[2];
+            transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * dynamSpeed * Time.deltaTime;
             float jump = Input.GetAxis("Jump");
             Animator SkaterAnimator = gameObject.GetComponentInChildren<Animator>();
-            if (!isGliding && jump != 0f)
-            {
-                SkaterAnimator.SetBool("JumpTrigger", true);
-                //glide for a while, cannot use arrow keys
-                isGliding = true;
-                glideTimer.TimerStart = true;
-            }
+
+        if (!isGliding && jump != 0f)
+
+        {
+            SkaterAnimator.SetBool("JumpTrigger", true);
+            //glide for a while, cannot use arrow keys
+            isGliding = true;
+            glideTimer.TimerStart = true;
+        }
 
             if(isGliding && glideTimer.TimerStart == false)
             {
@@ -76,7 +76,10 @@ public class MoveSkater : MonoBehaviour
                     SkaterAnimator.SetBool("JumpTrigger", false);
                     isGliding = false;
                 }
-            }
+
         }
+
+           
+       
     }
 }

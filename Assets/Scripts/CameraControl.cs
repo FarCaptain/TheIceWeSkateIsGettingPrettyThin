@@ -13,6 +13,6 @@ public class CameraControl : MonoBehaviour
         transform.position = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
 
         if (followRotation)
-            transform.rotation = target.transform.rotation;
+            transform.rotation = target.transform.rotation * Quaternion.Euler(0, 0, -90);
     }
 }
