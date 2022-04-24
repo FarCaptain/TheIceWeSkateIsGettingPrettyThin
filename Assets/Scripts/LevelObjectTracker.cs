@@ -8,18 +8,23 @@ public class LevelObjectTracker : MonoBehaviour
 {
     [SerializeField] private int numFallableObjects;
     [SerializeField] public TextMeshProUGUI counter;
-    [SerializeField] public TextMeshProUGUI endScreen;
+    [SerializeField] public TextMeshProUGUI total;
+    [SerializeField] public GameObject endScreen;
     [SerializeField] public string nextLevel;
     [SerializeField] public float nextLevelLoadDelay;
-    private string prefixString = "Remaining: ";
+    private string prefixString = "/";
+    private float numLeft;
+    private float numTotal;
 
 
     // Start is called before the first frame update
     void Start()
     {
         numFallableObjects = GameObject.FindGameObjectsWithTag("Fallable").Length;
-        counter.text = prefixString + numFallableObjects.ToString();
-        endScreen.alpha = 0;
+        counter.text = numFallableObjects.ToString();
+        numTotal = numFallableObjects;
+        total.text = prefixString + numFallableObjects.ToString();
+        
     }
 
     // Update is called once per frame
@@ -31,7 +36,8 @@ public class LevelObjectTracker : MonoBehaviour
     public void decreaseNumFallableObjects()
     {
         numFallableObjects--;
-        counter.text = prefixString + numFallableObjects.ToString();
+        numLeft = numTotal - numFallableObjects;
+        counter.text = numFallableObjects.ToString();
 
         if (numFallableObjects == 0)
         {
@@ -46,8 +52,8 @@ public class LevelObjectTracker : MonoBehaviour
 
     private void WinTransition()
     {
-        endScreen.text = "You Win";
-        endScreen.alpha = 1;
+        endScreen.SetActive(true);
+      
         Invoke("loadLevel", nextLevelLoadDelay);
         // Load Next level
     }

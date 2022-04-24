@@ -47,6 +47,7 @@ MonoBehaviour:
   iceLayers: 5
   iceMap: {fileID: 0}
   Skater: {fileID: 0}
+  UIgameOver: {fileID: 0}
   Wall:
   - {fileID: 11400000, guid: a85e410bc52546d4c99cffe07e92fa74, type: 2}
   TopLeftCorner:

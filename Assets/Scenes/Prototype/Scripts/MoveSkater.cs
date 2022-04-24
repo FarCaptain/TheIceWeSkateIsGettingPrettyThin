@@ -32,13 +32,9 @@ public class MoveSkater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-       
-            //Stops Skater when they fall
-            if (hasFell)
-                dynamSpeed = 0;
-
-
+        //Stops Skater when they fall
+        if (hasFell)
+            dynamSpeed = 0;
 
         if (!isGliding&&!hasFell)
         {

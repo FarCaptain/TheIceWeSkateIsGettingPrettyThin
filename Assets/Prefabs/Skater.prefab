@@ -9976,7 +9976,7 @@ MonoBehaviour:
   speed: 2
   turnSpeed: 50
   isGliding: 0
-  glidingDuration: 0
+  glidingDuration: 0.1
   jumpCoolDownDuration: 0
   hasFell: 0
   speedDif: 1

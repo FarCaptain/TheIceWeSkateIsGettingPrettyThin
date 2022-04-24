@@ -13,6 +13,8 @@ public class IceManager : MonoBehaviour
     [SerializeField]
     private GameObject Skater;
     [SerializeField]
+    private GameObject UIgameOver;
+    [SerializeField]
     private TileBase[] Wall;
     [SerializeField]
     private TileBase[] TopLeftCorner;
@@ -106,6 +108,7 @@ public class IceManager : MonoBehaviour
                     // TODO. Death animation
                     Skater.GetComponentInChildren<Animator>().SetBool("DeathTrigger", true);
                     Skater.GetComponent<MoveSkater>().hasFell = true;
+                    UIgameOver.SetActive(true);
                     //Object.Destroy(Skater, 0.1f);
                 }
                 else
