@@ -82,4 +82,9 @@ public class MoveSkater : MonoBehaviour
            
        
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+        
+    //}
 }
