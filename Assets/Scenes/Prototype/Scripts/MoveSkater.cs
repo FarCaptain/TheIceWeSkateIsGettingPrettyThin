@@ -38,9 +38,9 @@ public class MoveSkater : MonoBehaviour
 
             int turn = angleToMouse > 0 ? -1 : 1;
 
-            transform.eulerAngles += new Vector3(0, 0, turn * turnSpeed);
+            transform.eulerAngles += new Vector3(0, 0, turn * turnSpeed * Time.deltaTime);
             rotation = Mathf.Deg2Rad * transform.eulerAngles[2];
-            transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * speed;
+            transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * speed * Time.deltaTime;
 
             //Debug.Log("Direction:"+directionVector + "MouseVector:"+ mouseVector + "Angle to Mouse" + angleToMouse);
         }
@@ -49,10 +49,10 @@ public class MoveSkater : MonoBehaviour
             if (!isGliding)
             {
                 float turn = -Input.GetAxis("Horizontal");
-                transform.eulerAngles += new Vector3(0, 0, turn * turnSpeed);
+                transform.eulerAngles += new Vector3(0, 0, turn * turnSpeed * Time.deltaTime);
             }
             float rotation = Mathf.Deg2Rad * transform.eulerAngles[2];
-            transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * speed;
+            transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * speed * Time.deltaTime;
 
             float jump = Input.GetAxis("Jump");
             Animator SkaterAnimator = gameObject.GetComponentInChildren<Animator>();

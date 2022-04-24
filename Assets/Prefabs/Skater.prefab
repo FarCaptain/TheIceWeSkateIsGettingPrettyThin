@@ -5157,8 +5157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270c062353ea1b54aa41f61f53a3792e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
-  turnSpeed: 2
+  speed: 2
+  turnSpeed: 200
   mouseControl: 0
   isGliding: 0
   glidingDuration: 0

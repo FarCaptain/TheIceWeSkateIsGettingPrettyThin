@@ -543,14 +543,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skater
       objectReference: {fileID: 0}
-    - target: {fileID: 3306637573007448782, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
-      propertyPath: speed
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 3306637573007448782, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
-      propertyPath: mouseControl
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3306637573007448783, guid: beb39cc6e81ba4126ae4cfd7240c3c46, type: 3}
       propertyPath: m_RootOrder
       value: 4
