@@ -133,6 +133,13 @@ public class IceManager : MonoBehaviour
         return iceMap.GetTile(tile).name != allTiles[0].name;
     }
 
+    public string GetTileName(Vector3Int tilePos)
+    {
+        if (!iceMap.HasTile(tilePos))
+            return "Empty";
+        return iceMap.GetTile(tilePos).name;
+    }
+
     //dfs
     private bool findEncirledGrids(Vector3Int tile)
     {
