@@ -14,13 +14,21 @@ public class MoveSkater : MonoBehaviour
     private Timer glideTimer;
     private Timer jumpCooldownTimer;
 
+    // physics movement
+    public bool canSlide = false;
+    public float slideFactor;
+
     //Julian
     public bool hasFell = false;
     public float speedDif;
     private float dynamSpeed;
 
+    private Rigidbody2D rigidBody;
+
     void Start()
     {
+        rigidBody = GetComponent<Rigidbody2D>();
+
         glideTimer = gameObject.AddComponent<Timer>();
         jumpCooldownTimer = gameObject.AddComponent<Timer>();
         glideTimer.MaxTime = glidingDuration;
@@ -38,18 +46,22 @@ public class MoveSkater : MonoBehaviour
 
         if (!isGliding&&!hasFell)
         {
+            float speedUP = Input.GetAxis("Vertical");
+            dynamSpeed = speed + (speedUP * speedDif) * Time.deltaTime;
+            //Move(new Vector3(dynamSpeed, 0f, 0f));
+
 
             float turn = -Input.GetAxis("Horizontal");
             transform.eulerAngles += new Vector3(0, 0, turn * turnSpeed * Time.deltaTime);
-            //Speed variation
-            float speedUP = Input.GetAxis("Vertical");
-            dynamSpeed = speed + (speedUP * speedDif);
-            }
+        }
 
-            float rotation = Mathf.Deg2Rad * transform.eulerAngles[2];
-            transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * dynamSpeed * Time.deltaTime;
-            float jump = Input.GetAxis("Jump");
-            Animator SkaterAnimator = gameObject.GetComponentInChildren<Animator>();
+        float rotation = Mathf.Deg2Rad * transform.eulerAngles[2];
+        Move(new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * dynamSpeed);
+        //transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * dynamSpeed;
+
+        
+        float jump = Input.GetAxis("Jump");
+        Animator SkaterAnimator = gameObject.GetComponentInChildren<Animator>();
 
         if (!isGliding && jump != 0f)
 
@@ -60,28 +72,37 @@ public class MoveSkater : MonoBehaviour
             glideTimer.TimerStart = true;
         }
 
-            if(isGliding && glideTimer.TimerStart == false)
+        if(isGliding && glideTimer.TimerStart == false)
+        {
+            //if (jumpCooldownTimer.TimerStart == false)
+            //{
+            //    jumpCooldownTimer.TimerStart = true;
+            //}
+            //else
             {
-                //if (jumpCooldownTimer.TimerStart == false)
-                //{
-                //    jumpCooldownTimer.TimerStart = true;
-                //}
-                //else
-                {
-                    glideTimer.ResetTimer();
-                    SkaterAnimator.SetBool("JumpTrigger", false);
-                    isGliding = false;
-                }
-
+                glideTimer.ResetTimer();
+                SkaterAnimator.SetBool("JumpTrigger", false);
+                isGliding = false;
+            }
         }
+    }
 
-           
-       
+    private void Move(Vector3 motion)
+    {
+        if (canSlide)
+            rigidBody.AddForce(motion * slideFactor);
+        else
+            rigidBody.velocity = motion;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(-10f, 0));
-        print("int");
+        Vector2 vel = rigidBody.velocity;
+        //vel.Normalize();
+
+        rigidBody.velocity *= -1;
+
+        //GetComponent<Rigidbody2D>().AddForce(-vel * 1000f);
+        //print("int");
     }
 }
