@@ -101,14 +101,24 @@ public class IceManager : MonoBehaviour
 
             if (iceMap.HasTile(cellLocation) && currentTile != cellLocation)
             {
-                Vector2Int indexOfCurrentTile = tileIndex[iceMap.GetTile(currentTile).name];
+                
+
+
+                Vector2Int indexOfCurrentTile = tileIndex[iceMap.GetTile(cellLocation).name];
                 if (indexOfCurrentTile.y == 2 && !IsWall(currentTile))
                 {
                     //Player Drowns
                     // TODO. Death animation
-                    Skater.GetComponentInChildren<Animator>().SetBool("DeathTrigger", true);
-                    Skater.GetComponent<MoveSkater>().hasFell = true;
-                    UIgameOver.SetActive(true);
+                    float rotation = Mathf.Deg2Rad * Skater.transform.eulerAngles[2];
+                    Vector3 DirectionofCharacter = new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0);
+                    Vector3Int blockInFrontOfCharacter = grid.WorldToCell(Skater.transform.position + DirectionofCharacter * .6f);
+
+                    if (IsWater(blockInFrontOfCharacter))
+                    {
+                        Skater.GetComponentInChildren<Animator>().SetBool("DeathTrigger", true);
+                        Skater.GetComponent<MoveSkater>().hasFell = true;
+                        UIgameOver.SetActive(true);
+                    }
                     //Object.Destroy(Skater, 0.1f);
                 }
                 else
