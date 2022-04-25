@@ -56,7 +56,7 @@ public class MoveSkater : MonoBehaviour
         }
 
         float rotation = Mathf.Deg2Rad * transform.eulerAngles[2];
-        Move(new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * dynamSpeed);
+        Move(new Vector3(Mathf.Cos(rotation) * dynamSpeed, Mathf.Sin(rotation) * dynamSpeed, 0) );
         //transform.position += new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0) * dynamSpeed;
 
         

@@ -9974,7 +9974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270c062353ea1b54aa41f61f53a3792e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 2.5
   turnSpeed: 50
   isGliding: 0
   glidingDuration: 0.2
@@ -9982,7 +9982,7 @@ MonoBehaviour:
   canSlide: 0
   slideFactor: 0
   hasFell: 0
-  speedDif: 2
+  speedDif: 50
 --- !u!50 &2136339068649594399
 Rigidbody2D:
   serializedVersion: 4
