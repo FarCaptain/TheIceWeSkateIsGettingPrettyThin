@@ -8,6 +8,7 @@ public class FallableObject : MonoBehaviour
     private Grid grid;
     private IceManager iceManager;
     private Vector3Int loc;
+    private Animator anim;
     [SerializeField] Tilemap iceMap;
 
     private LevelObjectTracker tracker;
@@ -21,6 +22,8 @@ public class FallableObject : MonoBehaviour
 
 
         tracker = GameObject.Find("Tracker").GetComponent<LevelObjectTracker>();
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class FallableObject : MonoBehaviour
         if (iceManager.GetTileName(loc).Equals("Water"))
         {
             tracker.decreaseNumFallableObjects();
-            Destroy(this.gameObject);
+            anim.SetTrigger("FallTrigger");
         }
 
     }
