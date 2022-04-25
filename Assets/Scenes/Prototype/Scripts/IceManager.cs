@@ -194,7 +194,7 @@ public class IceManager : MonoBehaviour
         if (IsWall(tile))
             return false;
 
-        if (IsSteped(tile))
+        if (IsSteped(tile) || IsWater(tile))
         {
             if (visitTable.ContainsKey(tile))
                 visitTable.Remove(tile);
