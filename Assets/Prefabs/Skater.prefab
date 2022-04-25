@@ -9978,6 +9978,8 @@ MonoBehaviour:
   isGliding: 0
   glidingDuration: 0.1
   jumpCoolDownDuration: 0
+  canSlide: 0
+  slideFactor: 0
   hasFell: 0
   speedDif: 1
 --- !u!50 &2136339068649594399
@@ -9988,19 +9990,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3306637573007448777}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &3645895287413808400
 BoxCollider2D:
   m_ObjectHideFlags: 0

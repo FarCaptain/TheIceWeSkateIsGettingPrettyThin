@@ -60,7 +60,12 @@ public class LevelObjectTracker : MonoBehaviour
 
     private void loadLevel()
     {
-        Debug.Log("Switching levels");
+        //Debug.Log("Switching levels");
         SceneManager.LoadScene(nextLevel);
+    }
+
+    public void OpenLevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
     }
 }
