@@ -95,14 +95,14 @@ public class MoveSkater : MonoBehaviour
             rigidBody.velocity = motion;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Vector2 vel = rigidBody.velocity;
-        //vel.Normalize();
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Vector2 vel = rigidBody.velocity;
+    //    //vel.Normalize();
 
-        rigidBody.velocity *= -1;
+    //    rigidBody.velocity *= -1;
 
-        //GetComponent<Rigidbody2D>().AddForce(-vel * 1000f);
-        //print("int");
-    }
+    //    //GetComponent<Rigidbody2D>().AddForce(-vel * 1000f);
+    //    //print("int");
+    //}
 }

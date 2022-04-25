@@ -12,9 +12,21 @@ EditorBuildSettings:
     path: Assets/Scenes/UI Screens/LevelSelect.unity
     guid: ec7df3089cc0a4b4aa75a7b794e4b13c
   - enabled: 1
-    path: Assets/Scenes/Prototype/PrototypeScene.unity
-    guid: 7cdb49ac2a6f30b4b95011034db54751
+    path: Assets/Scenes/Level 1/Level 01.unity
+    guid: f836174b3beb74b46845cfe70e086d81
   - enabled: 1
-    path: Assets/Scenes/Julian's workshop.unity
-    guid: b54b006d76a3e45cda8878df50387e29
+    path: Assets/Scenes/Level 2/Level 02.unity
+    guid: bfaa52d4ab68e6b4c8aa2aef479e7994
+  - enabled: 1
+    path: Assets/Scenes/Level 3/Level 03.unity
+    guid: 1faf032fb12e697419294aa237b74536
+  - enabled: 1
+    path: Assets/Scenes/Level 4/Level 04.unity
+    guid: ee5235a5b259f7042a38d3f732219fe4
+  - enabled: 1
+    path: Assets/Scenes/Level 6/Level 06.unity
+    guid: 06047ba53ce258248a81e225b2282d04
+  - enabled: 1
+    path: Assets/Scenes/Level 7/Level 07.unity
+    guid: 5b74df6284d8cf9429db50852f7fe9b8
   m_configObjects: {}
