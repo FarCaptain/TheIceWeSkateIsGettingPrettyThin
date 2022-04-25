@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallableObject (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5547865669078213397, guid: a86357c39b474514abf087df8b2b1444, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a86357c39b474514abf087df8b2b1444, type: 3}
 --- !u!1001 &149694696
@@ -397,6 +401,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallableObject (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5547865669078213397, guid: a86357c39b474514abf087df8b2b1444, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a86357c39b474514abf087df8b2b1444, type: 3}
 --- !u!1001 &235091855
@@ -574,6 +582,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 539324788}
     m_Modifications:
+    - target: {fileID: 2070754531423998659, guid: dc8bd334c39ae194787c8a3a7c11270c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010675345081712820, guid: dc8bd334c39ae194787c8a3a7c11270c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Credits
+      objectReference: {fileID: 0}
     - target: {fileID: 6228516563030724900, guid: dc8bd334c39ae194787c8a3a7c11270c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -876,6 +892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallableObject (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5547865669078213397, guid: a86357c39b474514abf087df8b2b1444, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a86357c39b474514abf087df8b2b1444, type: 3}
 --- !u!1 &1300032561
@@ -1042,6 +1062,10 @@ PrefabInstance:
     - target: {fileID: 5547865669078213397, guid: a86357c39b474514abf087df8b2b1444, type: 3}
       propertyPath: m_Name
       value: FallableObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 5547865669078213397, guid: a86357c39b474514abf087df8b2b1444, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7856334526220824199, guid: a86357c39b474514abf087df8b2b1444, type: 3}
       propertyPath: m_LocalPosition.x
