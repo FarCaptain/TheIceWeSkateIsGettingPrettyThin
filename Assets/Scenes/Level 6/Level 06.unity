@@ -130,6 +130,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 442811908}
     m_Modifications:
+    - target: {fileID: 68629120860238879, guid: dc8bd334c39ae194787c8a3a7c11270c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level 06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243062715646562834, guid: dc8bd334c39ae194787c8a3a7c11270c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level 06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010675345081712820, guid: dc8bd334c39ae194787c8a3a7c11270c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level 07
+      objectReference: {fileID: 0}
     - target: {fileID: 6228516563030724900, guid: dc8bd334c39ae194787c8a3a7c11270c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
