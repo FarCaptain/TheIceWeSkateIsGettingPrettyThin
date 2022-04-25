@@ -9976,12 +9976,12 @@ MonoBehaviour:
   speed: 2
   turnSpeed: 50
   isGliding: 0
-  glidingDuration: 0.1
+  glidingDuration: 0.2
   jumpCoolDownDuration: 0
   canSlide: 0
   slideFactor: 0
   hasFell: 0
-  speedDif: 1
+  speedDif: 2
 --- !u!50 &2136339068649594399
 Rigidbody2D:
   serializedVersion: 4

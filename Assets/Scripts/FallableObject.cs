@@ -9,6 +9,7 @@ public class FallableObject : MonoBehaviour
     private IceManager iceManager;
     private Vector3Int loc;
     private Animator anim;
+    private bool isActive = true;
     [SerializeField] Tilemap iceMap;
 
     private LevelObjectTracker tracker;
@@ -29,10 +30,11 @@ public class FallableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (iceManager.GetTileName(loc).Equals("Water"))
+        if ((iceManager.GetTileName(loc).Equals("Water"))&&!isActive)
         {
             tracker.decreaseNumFallableObjects();
-            anim.SetTrigger("FallTrigger");
+            anim.SetBool("FallBool", false);
+            isActive = false;
         }
 
     }
