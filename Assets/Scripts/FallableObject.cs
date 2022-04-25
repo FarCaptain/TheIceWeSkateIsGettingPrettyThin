@@ -30,12 +30,12 @@ public class FallableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((iceManager.GetTileName(loc).Equals("Water"))&&!isActive)
+        print(iceManager.GetTileName(loc));
+        if ((iceManager.GetTileName(loc).Equals("Water")) && isActive)
         {
             tracker.decreaseNumFallableObjects();
-            anim.SetBool("FallBool", false);
+            anim.SetBool("FallBool", true);
             isActive = false;
         }
-
     }
 }
