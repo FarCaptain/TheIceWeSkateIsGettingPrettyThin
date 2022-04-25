@@ -23,7 +23,7 @@ public class FallableObject : MonoBehaviour
 
         tracker = GameObject.Find("Tracker").GetComponent<LevelObjectTracker>();
 
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
