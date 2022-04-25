@@ -181,6 +181,9 @@ public class IceManager : MonoBehaviour
         if (!iceMap.HasTile(tile))
             return false;
 
+        if (IsWall(tile))
+            return false;
+
         if (IsSteped(tile))
         {
             if (visitTable.ContainsKey(tile))
