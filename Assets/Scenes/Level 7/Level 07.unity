@@ -582,6 +582,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 539324788}
     m_Modifications:
+    - target: {fileID: 632613351364646631, guid: dc8bd334c39ae194787c8a3a7c11270c, type: 3}
+      propertyPath: nextLevel
+      value: Credits
+      objectReference: {fileID: 0}
     - target: {fileID: 2070754531423998659, guid: dc8bd334c39ae194787c8a3a7c11270c, type: 3}
       propertyPath: m_IsActive
       value: 0
